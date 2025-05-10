@@ -1,0 +1,137 @@
+<!-- templates/teachers/teacher-dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f8f9fa;
+      }
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      .actions a {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 8px 12px;
+        background: #007bff;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome, {{ request.user.get_full_name }}</h1>
+
+    <div class="dashboard">
+      <!-- Units Count -->
+      <div class="card">
+        <h2>Total Units</h2>
+        <p style="font-size: 24px">{{ unit_count }}</p>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <h2>Quick Actions</h2>
+        <div class="actions">
+          <a href="{% url 'mark_attendance' %}">Mark Attendance</a>
+          <a href="{% url 'upload_materials' %}">Upload Materials</a>
+          <a href="{% url 'create_assignment' %}">Create Assignment</a>
+        </div>
+      </div>
+      <div class="assignments">
+        <h3>Submitted Assignments</h3>
+        <ul>
+          {% for assignment in assignments %}
+          <li>
+            <strong>{{ assignment.title }}</strong> — Due: {{
+            assignment.due_date }}<br />
+            {{ assignment.description }}
+          </li>
+          {% empty %}
+          <li>No assignments have been created yet.</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Timetable -->
+      <div class="card" style="grid-column: span 2">
+        <h2>Your Timetable</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Unit</th>
+              <th>Room</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in timetable %}
+            <tr>
+              <td>{{ entry.day }}</td>
+              <td>{{ entry.time }}</td>
+              <td>{{ entry.unit }}</td>
+              <td>{{ entry.room }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="4">No timetable available.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card">
+        <h2>Notifications</h2>
+        <ul>
+          {% for note in notifications %}
+          <li>{{ note }}</li>
+          {% empty %}
+          <li>No new notifications.</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Events / Reminders -->
+      <div class="card">
+        <h2>Upcoming Events</h2>
+        <ul>
+          {% for event in events %}
+          <li>{{ event }}</li>
+          {% empty %}
+          <li>No upcoming events.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
