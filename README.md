@@ -39,8 +39,8 @@ Follow the steps below to get the project up and running on your local machine:
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/MyUniversity-Portal**.git
-cd MyUniversity-Portal**
+git clone https://github.com/d3q0w/MyUniversity-Portal.git
+cd MyUniversity-Portal
 ```
 
 ### **2. Create a Virtual Environment**
