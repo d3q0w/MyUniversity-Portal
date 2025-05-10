@@ -66,6 +66,10 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+if this command fails, you can run this: 
+```bash
+ winpty python manage.py createsuperuser
+```
 
 ### **7. Run the Application**
 ```bash
@@ -100,8 +104,12 @@ You can run the unit tests with Django's built-in testing framework:
 ```bash
 python manage.py test
 ```
-
 This will run all the tests located in the `tests.py` files of your Django apps.
+
+
+## **The most Important stuff to remember:
+The project is still under development, so when you need to use it as a student, you will need to set the boolean value in models.py 'is_student' as "True". You will do the same
+for the admin and lecturer roles if you want to use them.
 
 ## **Contributing**
 If you want to contribute to this project, please follow the steps below:
