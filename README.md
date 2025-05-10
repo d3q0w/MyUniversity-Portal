@@ -39,8 +39,8 @@ Follow the steps below to get the project up and running on your local machine:
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/student-management-system.git
-cd student-management-system
+git clone https://github.com/yourusername/MyUniversity-Portal**.git
+cd MyUniversity-Portal**
 ```
 
 ### **2. Create a Virtual Environment**
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 ```
 
 ### **4. Set Up Database**
-Make sure to set up your database (e.g., PostgreSQL) and update the `DATABASES` configuration in `student_management/settings.py`.
+Make sure to set up your database (e.g., PostgreSQL) and update the `DATABASES` configuration in `MyUniversity-Portal**/settings.py`.
 
 ### **5. Run Migrations**
 ```bash
@@ -115,6 +115,3 @@ If you want to contribute to this project, please follow the steps below:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
-=======
-# MyUniversity-Portal
-aee9d9101e7a7b1190b76ebec3731862925f6434
